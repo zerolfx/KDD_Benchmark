@@ -1,4 +1,3 @@
-#coding:utf-8
 import os, config
 from sklearn.datasets import load_svmlight_file
 from sklearn import svm, tree
@@ -34,7 +33,7 @@ class skLearn_DecisionTree(Strategy):
     def __init__(self):
         self.trainer = "skLearn decisionTree"
         self.clf = tree.DecisionTreeClassifier()
-        print("Using %s Classifier" % (self.trainer))
+        print(("Using %s Classifier" % (self.trainer)))
 
     def train_model(self, train_file_path, model_path):
         train_X, train_y = load_svmlight_file(train_file_path)
@@ -51,14 +50,14 @@ class skLearn_DecisionTree(Strategy):
 
         # write prediction to file
         with open(result_file_path, 'w') as fout:
-            fout.write("\n".join(map(str, map(int, pred_y))))
+            fout.write("\n".join(map(str, list(map(int, pred_y)))))
 
 
 class skLearn_NaiveBayes(Strategy):
     def __init__(self):
         self.trainer = "skLearn NaiveBayes"
         self.clf = GaussianNB()
-        print("Using %s Classifier" % (self.trainer))
+        print(("Using %s Classifier" % (self.trainer)))
 
     def train_model(self, train_file_path, model_path):
         train_X, train_y = load_svmlight_file(train_file_path)
@@ -77,13 +76,13 @@ class skLearn_NaiveBayes(Strategy):
 
         # write prediction to file
         with open(result_file_path, 'w') as fout:
-            fout.write("\n".join(map(str, map(int, pred_y))))
+            fout.write("\n".join(map(str, list(map(int, pred_y)))))
 
 class skLearn_svm(Strategy):
     def __init__(self):
         self.trainer = "skLearn svm"
         self.clf = svm.LinearSVC()
-        print("Using %s Classifier" % (self.trainer))
+        print(("Using %s Classifier" % (self.trainer)))
 
     def train_model(self, train_file_path, model_path):
         train_X, train_y = load_svmlight_file(train_file_path)
@@ -100,14 +99,14 @@ class skLearn_svm(Strategy):
 
         # write prediction to file
         with open(result_file_path, 'w') as fout:
-            fout.write("\n".join(map(str, map(int, pred_y))))
+            fout.write("\n".join(map(str, list(map(int, pred_y)))))
 
 
 class skLearn_lr(Strategy):
     def __init__(self):
         self.trainer = "skLearn LogisticRegression"
         self.clf = LogisticRegression()
-        print("Using %s Classifier" % (self.trainer))
+        print(("Using %s Classifier" % (self.trainer)))
 
     def train_model(self, train_file_path, model_path):
         train_X, train_y = load_svmlight_file(train_file_path)
@@ -124,14 +123,14 @@ class skLearn_lr(Strategy):
 
         # write prediction to file
         with open(result_file_path, 'w') as fout:
-            fout.write("\n".join(map(str, map(int, pred_y))))
+            fout.write("\n".join(map(str, list(map(int, pred_y)))))
 
 
 class skLearn_KNN(Strategy):
     def __init__(self):
         self.trainer = "skLearn KNN"
         self.clf = KNeighborsClassifier(n_neighbors=3)
-        print("Using %s Classifier" % (self.trainer))
+        print(("Using %s Classifier" % (self.trainer)))
 
     def train_model(self, train_file_path, model_path):
         train_X, train_y = load_svmlight_file(train_file_path)
@@ -148,7 +147,7 @@ class skLearn_KNN(Strategy):
 
         # write prediction to file
         with open(result_file_path, 'w') as fout:
-            fout.write("\n".join(map(str, map(int, pred_y))))
+            fout.write("\n".join(map(str, list(map(int, pred_y)))))
 
 
 
@@ -156,7 +155,7 @@ class skLearn_AdaBoostClassifier(Strategy):
     def __init__(self):
         self.trainer = "skLearn AdaBoostClassifier"
         self.clf = AdaBoostClassifier()
-        print("Using %s Classifier" % (self.trainer))
+        print(("Using %s Classifier" % (self.trainer)))
 
     def train_model(self, train_file_path, model_path):
         train_X, train_y = load_svmlight_file(train_file_path)
@@ -173,14 +172,14 @@ class skLearn_AdaBoostClassifier(Strategy):
 
         # write prediction to file
         with open(result_file_path, 'w') as fout:
-            fout.write("\n".join(map(str, map(int, pred_y))))
+            fout.write("\n".join(map(str, list(map(int, pred_y)))))
 
 
 class sklearn_RandomForestClassifier(Strategy):
     def __init__(self):
         self.trainer = "skLearn RandomForestClassifier"
         self.clf = RandomForestClassifier()
-        print("Using %s Classifier" % (self.trainer))
+        print(("Using %s Classifier" % (self.trainer)))
 
     def train_model(self, train_file_path, model_path):
         train_X, train_y = load_svmlight_file(train_file_path)
@@ -197,7 +196,7 @@ class sklearn_RandomForestClassifier(Strategy):
 
         # write prediction to file
         with open(result_file_path, 'w') as fout:
-            fout.write("\n".join(map(str, map(int, pred_y))))
+            fout.write("\n".join(map(str, list(map(int, pred_y)))))
 
 
 class sklearn_VotingClassifier(Strategy):
@@ -210,7 +209,7 @@ class sklearn_VotingClassifier(Strategy):
 
         self.clf = VotingClassifier(estimators=[('lr', clf1), ('svm', clf2), ('ada', clf3)], voting='hard')
 
-        print("Using %s Classifier" % (self.trainer))
+        print(("Using %s Classifier" % (self.trainer)))
 
     def train_model(self, train_file_path, model_path):
         train_X, train_y = load_svmlight_file(train_file_path)
@@ -227,7 +226,7 @@ class sklearn_VotingClassifier(Strategy):
 
         # write prediction to file
         with open(result_file_path, 'w') as fout:
-            fout.write("\n".join(map(str, map(int, pred_y))))
+            fout.write("\n".join(map(str, list(map(int, pred_y)))))
 
 
 

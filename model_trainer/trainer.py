@@ -1,13 +1,10 @@
-#encoding: utf-8
-import sys
-sys.path.append("../")
 import json
 import pandas
-from model_trainer.evalution import get_prediction, Evalution
+from model_trainer.evaluation import get_prediction, Evalution
 from model_trainer.data_loader import load_train_data
 from model_trainer.data_loader import load_test_data
 from model_trainer.make_feature_file import Make_feature_file
-from feature_functions import *
+from model_trainer.feature_functions import *
 from classifier import *
 
 
@@ -30,9 +27,9 @@ class Trainer(object):
 
     def make_feature_file(self, train_AuthorIdPaperIds, test_AuthorIdPaperIds, dict_coauthor, dict_paperIdAuthorId_to_name_aff, PaperAuthor, Author):
 
-        print("-"*120)
-        print("\n".join([f.__name__ for f in feature_function_list]))
-        print("-" * 120)
+        print(("-"*120))
+        print(("\n".join([f.__name__ for f in feature_function_list])))
+        print(("-" * 120))
 
         print("make train feature file ...")
         Make_feature_file(train_AuthorIdPaperIds, dict_coauthor, dict_paperIdAuthorId_to_name_aff, PaperAuthor, Author, self.feature_function_list, self.train_feature_path)
@@ -84,7 +81,7 @@ if __name__ == "__main__":
     trainer = Trainer(classifier, model_path, feature_function_list, train_feature_path, test_feature_path, test_result_path)
 
     ''' load data '''
-    print "loading data..."
+    print("loading data...")
     train_AuthorIdPaperIds = load_train_data(config.TRAIN_FILE)  # 加载训练数据
     test_AuthorIdPaperIds = load_test_data(config.TEST_FILE)  # 加载测试数据
     # coauthor, 共作者数据
@@ -95,7 +92,7 @@ if __name__ == "__main__":
     # 使用pandas加载csv数据
     PaperAuthor = pandas.read_csv(config.PAPERAUTHOR_FILE)  # 加载 PaperAuthor.csv 数据
     Author = pandas.read_csv(config.AUTHOR_FILE) # 加载 Author.csv 数据
-    print "data is loaded..."
+    print("data is loaded...")
 
     # 为训练和测试数据，抽取特征，分别生成特征文件
     trainer.make_feature_file(train_AuthorIdPaperIds, test_AuthorIdPaperIds, dict_coauthor, dict_paperIdAuthorId_to_name_aff, PaperAuthor, Author)
@@ -109,7 +106,7 @@ if __name__ == "__main__":
     ''' 评估,（预测 vs 标准答案）'''
     gold_file = config.GOLD_FILE
     pred_file = config.TEST_PREDICT_PATH
-    cmd = "python evalution.py %s %s" % (gold_file, pred_file)
+    cmd = "python %s %s %s" % (os.path.join(config.CWD, "model_trainer", "evaluation.py"), gold_file, pred_file)
     os.system(cmd)
 
 

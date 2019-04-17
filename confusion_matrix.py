@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """A collection of data structures that are particularly
 useful for developing and improving a classifier
 """
@@ -75,7 +74,7 @@ class ConfusionMatrix(object):
             row = [self.alphabet.get_label(i)] + [str(self.matrix[i,j]) for j in range(num_classes)]
             rows.append(row)
         print("row = predicted, column = truth")
-        print(matrix_to_string(rows, header))
+        print((matrix_to_string(rows, header)))
 
     def get_matrix(self):
         num_classes = self.alphabet.size()
@@ -121,7 +120,7 @@ class ConfusionMatrix(object):
         lines.append( '* Overall accuracy rate = %f' %(correct / sum(sum(self.matrix[:,:]))))
         lines.append( '* Average precision %f \t recall %f\t F1 %f' %\
             (numpy.mean(precision), numpy.mean(recall), numpy.mean(f1)))
-        print('\n'.join(lines))
+        print(('\n'.join(lines)))
 
     def get_summary(self):
         correct = 0
@@ -320,7 +319,7 @@ class Alphabet(object):
         alphabet = cls()
         alphabet._label_to_index = alphabet_dictionary['_label_to_index']
         alphabet._index_to_label = {}
-        for label, index in alphabet._label_to_index.items():
+        for label, index in list(alphabet._label_to_index.items()):
             alphabet._index_to_label[index] = label
         # making sure that the dimension agrees
         assert(len(alphabet._index_to_label) == len(alphabet._label_to_index))

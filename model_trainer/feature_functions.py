@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-#encoding: utf-8
-import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
 import util
 import numpy as np
 
@@ -23,7 +18,7 @@ def coauthor_1(AuthorIdPaperId, dict_coauthor, dict_paperIdAuthorId_to_name_aff,
     # 从PaperAuthor中，根据paperId找coauthor。
     curr_coauthors = list(map(str, list(PaperAuthor[PaperAuthor["PaperId"] == int(paperId)]["AuthorId"].values)))
     #
-    top_coauthors = dict_coauthor[authorId].keys()
+    top_coauthors = list(dict_coauthor[authorId].keys())
 
     # 简单计算top 10 coauthor出现的个数
     nums = len(set(curr_coauthors) & set(top_coauthors))
@@ -159,10 +154,10 @@ def longest_common_subsequence(a, b):
 
 # 最长公共子串（LSS）
 def longest_common_substring(a, b):
-    m = [[0] * (1 + len(b)) for i in xrange(1 + len(a))]
+    m = [[0] * (1 + len(b)) for i in range(1 + len(a))]
     longest, x_longest = 0, 0
-    for x in xrange(1, 1 + len(a)):
-        for y in xrange(1, 1 + len(b)):
+    for x in range(1, 1 + len(a)):
+        for y in range(1, 1 + len(b)):
             if a[x - 1] == b[y - 1]:
                 m[x][y] = m[x - 1][y - 1] + 1
                 if m[x][y] > longest:
@@ -194,6 +189,6 @@ def Levenshtein_distance(input_x, input_y):
 
 
 if __name__ == '__main__':
-    print Levenshtein_distance("abc", "ab")
+    print(Levenshtein_distance("abc", "ab"))
 
 

@@ -1,7 +1,3 @@
-#!/usr/bin/env python
-#encoding: utf-8
-import sys
-sys.setdefaultencoding('utf-8')
 from authorIdPaperId import AuthorIdPaperId
 import util
 

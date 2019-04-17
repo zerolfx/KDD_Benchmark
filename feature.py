@@ -1,4 +1,3 @@
-#coding:utf-8
 # 特征类
 class Feature:
     def __init__(self,name, dimension, feat_dict):

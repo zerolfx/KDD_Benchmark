@@ -1,14 +1,9 @@
 #!/usr/bin/env python
-#encoding: utf-8
 import os
 import socket
-import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
 
 # 当前工作目录
-#CWD = "/home/username/KDD/KDD_benchmark" # Linux系统目录
-CWD = "D:\KDD\KDD_Benchmark" # Windows系统目录
+CWD = os.path.dirname(__file__)
 
 DATA_PATH = os.path.join(CWD, "data")
 DATASET_PATH = os.path.join(DATA_PATH, "dataset")

@@ -1,10 +1,5 @@
-#!/usr/bin/env python
-#encoding: utf-8
 import os
 import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
-sys.path.append("../")
 import util
 import config
 from confusion_matrix import Alphabet, ConfusionMatrix
@@ -32,7 +27,7 @@ def get_prediction(test_feature_path, test_result_path, to_file):
             dict_authorId_to_predict[authorId]["DeletedPaperIds"].append(paperId)
 
     # to csv
-    items = sorted(dict_authorId_to_predict.items(), key=lambda x: x[0])
+    items = sorted(list(dict_authorId_to_predict.items()), key=lambda x: x[0])
 
     data = []
     for item in items:
@@ -93,9 +88,9 @@ if __name__ == '__main__':
     # accuracy
     acc = cm.get_accuracy()
     # 打印评估结果
-    print ""
-    print "##" * 20
-    print "    评估结果, 以Accuracy为准"
-    print "##" * 20
-    print ""
+    print("")
+    print("##" * 20)
+    print("    评估结果, 以Accuracy为准")
+    print("##" * 20)
+    print("")
     cm.print_out()

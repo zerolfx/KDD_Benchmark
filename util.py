@@ -1,14 +1,8 @@
-#!/usr/bin/env python
-#encoding: utf-8
 import csv
 import os
 import sys
 
 from feature import Feature
-
-reload(sys)
-sys.setdefaultencoding('utf-8')
-
 
 # fieldnames = ['first_name', 'last_name']
 # [{'first_name': 'Baked', 'last_name': 'Beans'}, {'first_name': 'Lovely', 'last_name': 'Spam'}]
@@ -109,5 +103,5 @@ def write_example_list_to_arff_file(example_list, dimension, to_file):
 
 
 if __name__ == '__main__':
-    s  = "0 ".split(" ")
-    print s
+    s = "0 ".split(" ")
+    print(s)

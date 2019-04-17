@@ -1,4 +1,3 @@
-#encoding: utf-8
 # import pyprind
 import util
 from example import Example
