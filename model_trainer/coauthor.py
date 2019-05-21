@@ -42,7 +42,7 @@ def get_top_k_coauthors(paper_author_path, k, to_file):
             res[authorId][coauthorId] = freq
 
     print("dump...")
-    json.dump(res, open(to_file, "w"), encoding="utf-8")
+    json.dump(res, open(to_file, "w"))
 
 
 if __name__ == '__main__':

@@ -44,9 +44,11 @@ def coauthor_2(AuthorIdPaperId, dict_coauthor, dict_paperIdAuthorId_to_name_aff,
 
     return util.get_feature_by_list([score])
 
+
 ''' String Distance Feature'''
 # 1. name-a 与name1##name2##name3的距离，同理affliction-a 和 aff1##aff2##aff3的距离
-def stringDistance_1(AuthorIdPaperId, dict_coauthor, dict_paperIdAuthorId_to_name_aff, PaperAuthor, Author):
+def stringDistance_1(AuthorIdPaperId, dict_coauthor, dict_paperIdAuthorId_to_name_aff,
+                     PaperAuthor, Author):
     authorId = AuthorIdPaperId.authorId
     paperId = AuthorIdPaperId.paperId
 
