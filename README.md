@@ -1,5 +1,20 @@
 # KDD 数据挖掘大作业
 
+## 使用说明
+
+1. 安装依赖
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+    
+2. 运行 `solution/go.py`
+
+## 开发说明
+
+1. 增加新的 Python 文件用于提取特征并保存到 pickle 中
+2. 在 go.py 中读取并加入新的特征
+
 ## Benchmark 程序
 
 ### 一、程序使用 python37 进行开发，安装依赖：

@@ -52,10 +52,11 @@ if __name__ == "__main__":
 
     ''' 特征函数列表 '''
     feature_function_list = [
-        coauthor_1,
-        coauthor_2,
+        # coauthor_1,
+        # coauthor_2,
         stringDistance_1,
-        stringDistance_2,
+        # stringDis
+        # tance_2,
     ]
 
     ''' 分类器 '''

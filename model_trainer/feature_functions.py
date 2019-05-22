@@ -67,13 +67,16 @@ def stringDistance_1(AuthorIdPaperId, dict_coauthor, dict_paperIdAuthorId_to_nam
     feat_list = []
 
     # 计算 a_name 与 name 的距离
-    feat_list.append(len(longest_common_subsequence(a_name, name)))
-    feat_list.append(len(longest_common_substring(a_name, name)))
-    feat_list.append(Levenshtein_distance(a_name, name))
+    # feat_list.append(len(longest_common_subsequence(a_name, name)))
+    # feat_list.append(len(longest_common_substring(a_name, name)))
+    # feat_list.append(Levenshtein_distance(a_name, name))
     # 计算 a_aff 与 aff 的距离
-    feat_list.append(len(longest_common_subsequence(a_aff, aff)))
-    feat_list.append(len(longest_common_substring(a_aff, aff)))
-    feat_list.append(Levenshtein_distance(a_aff, aff))
+    # feat_list.append(len(longest_common_subsequence(a_aff, aff)))
+    # feat_list.append(len(longest_common_substring(a_aff, aff)))
+    # feat_list.append(Levenshtein_distance(a_aff, aff))
+    feat_list.append(1 if a_name in name else 0)
+    # feat_list.append(1 if a_aff in aff else 0)
+    feat_list.append(len(name.split('##')))
 
     return util.get_feature_by_list(feat_list)
 

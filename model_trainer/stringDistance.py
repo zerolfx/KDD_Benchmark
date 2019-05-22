@@ -42,6 +42,6 @@ def load_paperIdAuthorId_to_name_and_affiliation(PaperAuthor_PATH, to_file):
 
 
 if __name__ == '__main__':
-    load_paperIdAuthorId_to_name_and_affiliation(config.PAPERAUTHOR_FILE, config.DATASET_PATH + "/paperIdAuthorId_to_name_and_affiliation.json")
+    load_paperIdAuthorId_to_name_and_affiliation(config.PAPERAUTHOR_FILE, config.PAPERIDAUTHORID_TO_NAME_AND_AFFILIATION_FILE)
 
 
