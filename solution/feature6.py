@@ -4,15 +4,14 @@ from utils import *
 
 
 def get_feature(author_id, paper_id):
-    p_a = paper_author_data[(paper_author_data['PaperId'] == paper_id) &
-                            (paper_author_data['AuthorId'] == author_id)]
+    p_a = paper_author_data[(paper_author_data['PaperId'] == paper_id)]
 
     coauthors = dict_coauthor[str(author_id)]
     score = 0
     for _, row in p_a.iterrows():
         if str(row.AuthorId) in coauthors:
             score += coauthors[str(row.AuthorId)]
-    feature = [score, sum(coauthors.values())]
+    feature = [score, sum(coauthors.values()), p_a.shape[0]]
     # print(feature)
     return feature
 

@@ -2,6 +2,7 @@ from utils import *
 import textdistance
 from fuzzywuzzy import fuzz
 
+
 def get_feature(author_id, paper_id):
     distance_funcs = [
         textdistance.JaroWinkler(),
@@ -10,22 +11,17 @@ def get_feature(author_id, paper_id):
         fuzz.token_sort_ratio
     ]
 
-
     a = author_data[author_data['Id'] == author_id].iloc[0]
     p_a = paper_author_data[(paper_author_data['PaperId'] == paper_id) &
                             (paper_author_data['AuthorId'] == author_id)]
-    feature = list()
-    if p_a.shape[0] == 0:
-        feature += [0] + [0 for _ in range(len(distance_funcs) * 2)]
-    else:
-        name_l = [10000 for _ in range(len(distance_funcs))]
-        aff_l = [10000 for _ in range(len(distance_funcs))]
-        for _, row in p_a.iterrows():
-            for i, f in enumerate(distance_funcs):
-                name_l[i] = min(name_l[i], f(a.Name, row.Name))
-                aff_l[i] = min(aff_l[i], f(str(a.Affiliation), str(row.Affiliation)))
+    name_l = [10000 for _ in range(len(distance_funcs))]
+    aff_l = [10000 for _ in range(len(distance_funcs))]
+    for _, row in p_a.iterrows():
+        for i, f in enumerate(distance_funcs):
+            name_l[i] = min(name_l[i], f(a.Name, row.Name))
+            aff_l[i] = min(aff_l[i], f(str(a.Affiliation), str(row.Affiliation)))
 
-        feature += [1] + name_l + aff_l
+    feature = name_l + aff_l
     return feature
 
 

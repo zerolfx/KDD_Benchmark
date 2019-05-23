@@ -30,7 +30,8 @@ def get_feature(author_id, paper_id):
             paper = paper.iloc[0]
             _kws = get_words(paper)
             cnt += len(_kws)
-            s.update(_kws)
+            if paper.Id != paper_id:
+                s.update(_kws)
         feature.append(cnt / p_a.shape[0])
         feature.append(len(s.intersection(set(kws))))
 
